@@ -16,6 +16,10 @@ jobs:
           sudo swapoff -av
           sudo rm -f /swapfile
           
+      - name: Listing disk space
+        run: |
+          sudo du -a / | sort -n -r | head -n 20
+          
       - name: Creating worker space
         run: |
           sudo mkdir -p /work
