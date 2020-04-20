@@ -38,6 +38,6 @@ jobs:
        
       - name: Listing files
         run: |
-          ls -laR $GITHUB_WORKSPACE/largefs
+          ls -laR $GITHUB_WORKSPACE/largefs/
 
           
