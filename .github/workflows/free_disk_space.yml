@@ -19,7 +19,7 @@ jobs:
       - name: Creating worker space
         run: |
           sudo mkdir -p /work
-          sudo chown -R worker:docker /work
+          sudo chown -R runner:docker /work
           ls -la / 
 
           
