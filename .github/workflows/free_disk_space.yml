@@ -21,7 +21,9 @@ jobs:
           sudo mkdir -p /work
           sudo chown -R runner:docker /work
           ls -la /
+          echo $GITHUB_WORKSPACE
           ls -la $GITHUB_WORKSPACE
+          echo $GITHUB_WORKSPACE
           
       - name: Deleting folder
         run: rm -rf $GITHUB_WORKSPACE
