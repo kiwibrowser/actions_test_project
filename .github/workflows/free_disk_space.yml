@@ -22,6 +22,7 @@ jobs:
           sudo chown -R runner:docker /work
           ls -la /
           echo $GITHUB_WORKSPACE
+          pwd
           ls -la $GITHUB_WORKSPACE
           echo $GITHUB_WORKSPACE
           
