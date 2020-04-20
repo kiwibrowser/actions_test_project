@@ -11,16 +11,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Disk space
+      - name: Reclaiming disk space
         run: |
-          whoami
-          id
-          free -m
-          df -h
-          ls -la /
           sudo swapoff -av
           sudo rm -f /swapfile
-          df -h
-          free -m
-          ls -la /
+          
+      - name: Creating worker space
+        run: |
+          sudo mkdir -p /work
+          sudo chown -R worker:docker /work
+          ls -la / 
+
           
