@@ -25,20 +25,19 @@ jobs:
           pwd
           ls -la $GITHUB_WORKSPACE
           echo $GITHUB_WORKSPACE
-          
-      - name: Deleting folder
-        run: rm -rf $GITHUB_WORKSPACE
-        
+                  
       - name: Testing
         run: echo $GITHUB_WORKSPACE
         
       - name: Running symlink
-        run: ln -s /work $GITHUB_WORKSPACE
-      
+        run: ln -s /work $GITHUB_WORKSPACE/largefs
+        
       - uses: actions/checkout@v2
+        with:
+          path: largefs/src
        
       - name: Listing files
         run: |
-          ls -laR /work
+          ls -laR $GITHUB_WORKSPACE/largefs
 
           
