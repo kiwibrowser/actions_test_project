@@ -23,11 +23,11 @@ jobs:
           ls -la / 
           
       - name: Checking if variable survived
-        run: echo $GITHUB_WORKSPACE
+        run: rm -rf $GITHUB_WORKSPACE
+      
+      - run: ln -s /work $GITHUB_WORKSPACE
       
       - uses: actions/checkout@v2
-        env:
-          GITHUB_WORKSPACE: /work
        
       - name: Listing files
         run: |
