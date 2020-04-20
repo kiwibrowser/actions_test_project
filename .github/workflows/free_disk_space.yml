@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Disk space
         run: |
+          whoami
+          id
           free -m
           df -h
           ls -la /
