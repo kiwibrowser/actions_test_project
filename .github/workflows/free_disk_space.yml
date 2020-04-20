@@ -31,6 +31,6 @@ jobs:
        
       - name: Listing files
         run: |
-          ls -laR / 
+          ls -laR /work
 
           
