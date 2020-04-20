@@ -19,7 +19,7 @@ jobs:
       - name: Listing disk space
         run: |
           sudo df -h
-          sudo rm -rvf /usr/share/dotnet
+          sudo rm -rf /usr/share/dotnet
           sudo df -h
           
       - name: Listing files
