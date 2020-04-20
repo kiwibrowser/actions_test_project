@@ -20,12 +20,17 @@ jobs:
         run: |
           sudo mkdir -p /work
           sudo chown -R runner:docker /work
-          ls -la / 
+          ls -la /
+          ls -la $GITHUB_WORKSPACE
           
-      - name: Checking if variable survived
+      - name: Deleting folder
         run: rm -rf $GITHUB_WORKSPACE
-      
-      - run: ln -s /work $GITHUB_WORKSPACE
+        
+      - name: Testing
+        run: echo $GITHUB_WORKSPACE
+        
+      - name: Running symlink
+        run: ln -s /work $GITHUB_WORKSPACE
       
       - uses: actions/checkout@v2
        
