@@ -21,9 +21,16 @@ jobs:
           sudo mkdir -p /work
           sudo chown -R runner:docker /work
           ls -la / 
-          export GITHUB_WORKSPACE=/work
-          echo $GITHUB_WORKSPACE
           
       - name: Checking if variable survived
         run: echo $GITHUB_WORKSPACE
+      
+      - uses: actions/checkout@v2
+        env:
+          GITHUB_WORKSPACE: /work
+       
+      - name: Listing files
+        run: |
+          ls -laR / 
+
           
