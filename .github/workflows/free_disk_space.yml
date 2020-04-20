@@ -18,7 +18,13 @@ jobs:
           
       - name: Listing disk space
         run: |
-          sudo du -csh /*
+          sudo df -h
+          sudo rm -rvf /usr/share/dotnet
+          sudo df -h
+          
+      - name: Listing files
+        run: |
+          sudo du -a / | sort -n -r | head -n 50
           
       - name: Creating worker space
         run: |
