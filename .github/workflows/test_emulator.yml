@@ -26,8 +26,8 @@ jobs:
         arch: x86_64
         script: |
           adb install ./test.apk
-          adb shell monkey -p com.kiwibrowser.browser -v 500 &
-          adb shell screenrecord --time-limit=35 /sdcard/test.mp4 && adb pull /sdcard/test.mp4 screenshots/test.mp4
+          nohup adb shell monkey -p com.kiwibrowser.browser -v 500 &
+          adb shell screenrecord --time-limit=60 /sdcard/test.mp4 && adb pull /sdcard/test.mp4 screenshots/test.mp4
 
     - uses: actions/upload-artifact@v1
       with:
