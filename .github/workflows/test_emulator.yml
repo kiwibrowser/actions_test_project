@@ -24,7 +24,7 @@ jobs:
       uses: reactivecircus/android-emulator-runner@v2
       with:
         api-level: 28 # API Level 30 has support for ARM ABIs - see https://developer.android.com/studio/releases/emulator
-        arch: x86_64
+        arch: armv7
         script: |
           adb install ./test.apk
           nohup adb shell screenrecord --time-limit=60 /sdcard/test.mp4 &
