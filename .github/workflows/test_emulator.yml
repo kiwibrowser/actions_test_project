@@ -13,6 +13,9 @@ jobs:
     - name: checkout
       uses: actions/checkout@v2
     
+    - name: download apk
+      run: wget https://github.com/kiwibrowser/android/releases/download/20191007/158-1.apk
+    
     - name: create dir
       run: mkdir -p screenshots
 
@@ -21,8 +24,9 @@ jobs:
       with:
         api-level: 29
         script: |
-          adb shell screencap -p /sdcard/screencap.png && adb pull /sdcard/screencap.png screenshots/screen.png
-          adb shell screenrecord --time-limit=12 /sdcard/test.mp4 && adb pull /sdcard/test.mp4 screenshots/test.mp4
+          adb install ./158-1.apk
+          adb shell monkey -p com.kiwibrowser.browser -v 500 &
+          adb shell screenrecord --time-limit=35 /sdcard/test.mp4 && adb pull /sdcard/test.mp4 screenshots/test.mp4
 
     - uses: actions/upload-artifact@v1
       with:
