@@ -14,7 +14,7 @@ jobs:
       uses: actions/checkout@v2
     
     - name: download apk
-      run: wget https://github.com/kiwibrowser/android/releases/download/20191007/158-1.apk
+      run: wget https://github.com/kiwibrowser/android/releases/download/20191007/Kiwi-20191007091034-arm64.apk
     
     - name: create dir
       run: mkdir -p screenshots
@@ -23,8 +23,9 @@ jobs:
       uses: reactivecircus/android-emulator-runner@v2
       with:
         api-level: 29
+        arch: x86_64
         script: |
-          adb install ./158-1.apk
+          adb install ./Kiwi-20191007091034-arm64.apk
           adb shell monkey -p com.kiwibrowser.browser -v 500 &
           adb shell screenrecord --time-limit=35 /sdcard/test.mp4 && adb pull /sdcard/test.mp4 screenshots/test.mp4
 
