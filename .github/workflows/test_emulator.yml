@@ -20,7 +20,7 @@ jobs:
       uses: reactivecircus/android-emulator-runner@v2
       with:
         api-level: 29
-        script: adb shell screencap -p | perl -pe 's/\x0D\x0A/\x0A/g' > screenshots/screen.png
+        script: adb shell screencap -p | sed 's/\r$//' > screenshots/screen.png
 
     - uses: actions/upload-artifact@v1
       with:
