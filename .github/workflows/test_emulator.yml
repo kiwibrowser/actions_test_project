@@ -14,15 +14,16 @@ jobs:
       uses: actions/checkout@v2
     
     - name: download apk
-      run: wget 'https://download.apkpure.com/b/apk/Y29tLmtpd2licm93c2VyLmJyb3dzZXJfMTYxX2QwYjNjYmYw?_fn=S2l3aSBCcm93c2VyIEZhc3QgUXVpZXRfdlF1YWRlYV9hcGtwdXJlLmNvbS5hcGs&as=25512963943ab795b6c3240a46621af65e9e47a1&ai=148461088&_sa=ai&k=8793a0ff7fa7a7177068445bf26b27c25ea0ea29&_p=Y29tLmtpd2licm93c2VyLmJyb3dzZXI&c=1%7CCOMMUNICATION%7CZGV2PUdlb21ldHJ5JTIwT1UmdD1hcGsmcz01NDIwMzk3NSZ2bj1RdWFkZWEmdmM9MTYx' -O test.apk
-    
+ #     run: wget 'https://download.apkpure.com/b/apk/Y29tLmtpd2licm93c2VyLmJyb3dzZXJfMTYxX2QwYjNjYmYw?_fn=S2l3aSBCcm93c2VyIEZhc3QgUXVpZXRfdlF1YWRlYV9hcGtwdXJlLmNvbS5hcGs&as=25512963943ab795b6c3240a46621af65e9e47a1&ai=148461088&_sa=ai&k=8793a0ff7fa7a7177068445bf26b27c25ea0ea29&_p=Y29tLmtpd2licm93c2VyLmJyb3dzZXI&c=1%7CCOMMUNICATION%7CZGV2PUdlb21ldHJ5JTIwT1UmdD1hcGsmcz01NDIwMzk3NSZ2bj1RdWFkZWEmdmM9MTYx' -O test.apk
+      run: wget 'https://github.com/kiwibrowser/android/releases/download/20191007/158-1.apk' -O test.apk
+   
     - name: create dir
       run: mkdir -p screenshots
 
     - name: run tests
       uses: reactivecircus/android-emulator-runner@v2
       with:
-        api-level: 29
+        api-level: 30 # API Level 30 has support for ARM ABIs - see https://developer.android.com/studio/releases/emulator
         arch: x86_64
         script: |
           adb install ./test.apk
