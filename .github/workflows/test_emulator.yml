@@ -21,7 +21,7 @@ jobs:
       run: mkdir -p screenshots
 
     - name: run tests
-      uses: kiwibrowser/android-emulator-runner
+      uses: kiwibrowser/android-emulator-runner@master
       with:
         api-level: 28 # API Level 30 has support for ARM ABIs - see https://developer.android.com/studio/releases/emulator
         arch: armv7
