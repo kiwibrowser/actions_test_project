@@ -1,4 +1,4 @@
-name: Free disk space
+name: Test emulator
 
 on:
   push:
@@ -12,11 +12,19 @@ jobs:
     steps:
     - name: checkout
       uses: actions/checkout@v2
+    
+    - name: create dir
+      run: mkdir -p screenshots
 
     - name: run tests
       uses: reactivecircus/android-emulator-runner@v2
       with:
         api-level: 29
-        script: ./gradlew connectedCheck
+        script: adb shell screencap -p | perl -pe 's/\x0D\x0A/\x0A/g' > screenshots/screen.png
+
+    - uses: actions/upload-artifact@v1
+      with:
+        name: screenshots
+        path: screenshots
 
       
