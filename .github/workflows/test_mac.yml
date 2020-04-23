@@ -15,6 +15,7 @@ jobs:
       - name: Listing disk space
         run: |
           id
+          mkdir -p /Users/runner/storage
           ls -la /
           sudo df -h
           sysctl -a | grep machdep.cpu
