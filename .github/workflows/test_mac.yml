@@ -15,9 +15,8 @@ jobs:
       - name: Listing disk space
         run: |
           sudo df -h
-          sudo rm -rf /usr/share/dotnet
           sudo df -h
-          cat /proc/cpuinfo
+          system_profiler | grep Processor
           
       - name: Listing files
         run: |
