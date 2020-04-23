@@ -14,6 +14,8 @@ jobs:
           
       - name: Listing disk space
         run: |
+          id
+          ls -la /
           sudo df -h
           sysctl -a | grep machdep.cpu
           free -m
