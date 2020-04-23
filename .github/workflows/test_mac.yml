@@ -15,8 +15,7 @@ jobs:
       - name: Listing disk space
         run: |
           sudo df -h
-          sudo df -h
-          system_profiler | grep Processor
+          sysctl -a | grep machdep.cpu
           free -m
           
       - name: Listing files
