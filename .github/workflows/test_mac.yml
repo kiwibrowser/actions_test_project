@@ -11,10 +11,6 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - name: Reclaiming disk space
-        run: |
-          sudo swapoff -av
-          sudo rm -f /swapfile
           
       - name: Listing disk space
         run: |
