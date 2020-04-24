@@ -56,6 +56,14 @@ jobs:
         run: |
           docker run --name ubuntu ubuntu:eoan ls -la
       
+      - name: Running
+        run: |
+          docker run --name ubuntu ubuntu:eoan uptime  
+              
+      - name: Running
+        run: |
+          docker run --name ubuntu ubuntu:eoan uptime  
+              
       - name: Listing
         run: docker --version
         
