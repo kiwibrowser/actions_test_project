@@ -44,7 +44,7 @@ jobs:
 
       - name: Starting Ubuntu machine
         run: |
-          docker run --name ubuntu --storage-opt size=120G -t -d ubuntu:eoan
+          docker run --name ubuntu -o size=100G -t -d ubuntu:eoan
       #
           
       - name: Running
