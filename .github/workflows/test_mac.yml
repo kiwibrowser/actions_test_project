@@ -52,7 +52,7 @@ jobs:
       - name: Running
         run: |
           docker volume ls
-          find /Users/runner/Library/ -name 'Docker*'
+          find /Users/runner/Library/Containers
           docker exec ubuntu df -h
           docker exec ubuntu ls -la
 
