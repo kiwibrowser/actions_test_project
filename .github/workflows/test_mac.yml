@@ -52,7 +52,7 @@ jobs:
       - name: Running
         run: |
           docker volume ls
-          sudo find / -name 'Docker*'
+          sudo find / -name 'com.docker.docker'
           docker exec ubuntu df -h
           docker exec ubuntu ls -la
 
