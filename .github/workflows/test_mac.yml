@@ -11,6 +11,17 @@ jobs:
     runs-on: macos-latest
 
     steps:
+      - name: Init docker
+        run: brew install docker docker-compose docker-machine xhyve docker-machine-driver-xhyve
+        
+      - name: Give perms
+        run: |
+          sudo chown root:wheel $(brew --prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
+sudo      chmod u+s $(brew --prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve  
+      
+      - name: Running
+        run: docker run -it --name ubuntu ubuntu:eoan ls -la
+      
       - name: Listing
         run: docker --version
         
