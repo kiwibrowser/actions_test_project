@@ -47,6 +47,18 @@ jobs:
       
       - name: Running
         run: |
+          docker exec ubuntu id  
+          
+      - name: Running
+        run: |
+          docker exec ubuntu ls -la /home  
+          
+      - name: Running
+        run: |
+          docker exec ubuntu ls -la $HOME  
+          
+      - name: Running
+        run: |
           docker exec ubuntu pwd  
               
       - name: Running
