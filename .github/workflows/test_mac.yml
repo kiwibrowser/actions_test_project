@@ -54,6 +54,9 @@ jobs:
       - name: Running
         run: |
           df -h
+          find Library -name '*.qcow2'
+          echo "Ok"
+          sudo find /Library/ -name '*.qcow2'
           docker volume ls
           docker exec ubuntu df -h
           docker exec ubuntu ls -la
