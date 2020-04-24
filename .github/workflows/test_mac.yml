@@ -60,11 +60,11 @@ jobs:
       
       - name: Running
         run: |
-          docker run --name ubuntu ubuntu:eoan uptime  
+          docker exec ubuntu uptime  
               
       - name: Running
         run: |
-          docker run --name ubuntu ubuntu:eoan uptime  
+          docker exec ubuntu uptime  
               
       - name: Listing
         run: docker --version
