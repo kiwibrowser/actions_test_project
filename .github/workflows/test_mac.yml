@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Listing
-        run: ls -la
+        run: docker --version
         
       - name: Test
         run: echo "ok" > file.txt
