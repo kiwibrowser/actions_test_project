@@ -41,7 +41,9 @@ jobs:
         run: docker-machine ssh default id
 
       - name: Running
-        run: docker run --name ubuntu ubuntu:eoan ls -la
+        run: |
+          eval $(docker-machine env default)
+          docker run --name ubuntu ubuntu:eoan ls -la
       
       - name: Listing
         run: docker --version
