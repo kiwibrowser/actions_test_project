@@ -27,45 +27,36 @@ jobs:
             docker-machine rm -f default
             sleep 1;
           done
-
-      - name: Testing machine
-        run: docker-machine ls
-
-      - name: Env
-        run: docker-machine env default
-
-      - name: Docker-Machine
-        run: eval $(docker-machine env default)
-
-      - name: Testing machine
-        run: docker-machine ssh default id
         
       - name: Export connection to Docker
         run: |
-          eval "$(docker-machine env default)"
-          DOCKER_TLS_VERIFY="$(   docker-machine env default | grep DOCKER_TLS_VERIFY   | sed -e 's/.*="//g' -e 's/"$//g' )"
-          DOCKER_HOST="$(         docker-machine env default | grep DOCKER_HOST         | sed -e 's/.*="//g' -e 's/"$//g' )"
-          DOCKER_CERT_PATH="$(    docker-machine env default | grep DOCKER_CERT_PATH    | sed -e 's/.*="//g' -e 's/"$//g' )"
-          DOCKER_MACHINE_NAME="$( docker-machine env default | grep DOCKER_MACHINE_NAME | sed -e 's/.*="//g' -e 's/"$//g' )"
-          DOCKER_IP="$( docker-machine ip default )";
+          DOCKER_TLS_VERIFY="$(docker-machine env default | grep DOCKER_TLS_VERIFY | sed -e 's/.*="//g' -e 's/"$//g')"
+          DOCKER_HOST="$(docker-machine env default | grep DOCKER_HOST | sed -e 's/.*="//g' -e 's/"$//g')"
+          DOCKER_CERT_PATH="$(docker-machine env default | grep DOCKER_CERT_PATH | sed -e 's/.*="//g' -e 's/"$//g')"
+          DOCKER_MACHINE_NAME="$(docker-machine env default | grep DOCKER_MACHINE_NAME | sed -e 's/.*="//g' -e 's/"$//g')"
+          DOCKER_IP="$(docker-machine ip default)";
           echo ::set-env name=DOCKER_TLS_VERIFY::${DOCKER_TLS_VERIFY}
           echo ::set-env name=DOCKER_HOST::${DOCKER_HOST}
           echo ::set-env name=DOCKER_CERT_PATH::${DOCKER_CERT_PATH}
           echo ::set-env name=DOCKER_MACHINE_NAME::${DOCKER_MACHINE_NAME}
-          echo ::set-env name=localhostaddress::${DOCKER_IP}
+          echo ::set-env name=DOCKER_IP::${DOCKER_IP}
 
-      - name: Running
+      - name: Starting Ubuntu machine
         run: |
           docker run --name ubuntu -t -d ubuntu:eoan
       
       - name: Running
         run: |
-          docker exec ubuntu uptime  
+          docker exec ubuntu pwd  
               
       - name: Running
         run: |
-          docker exec ubuntu uptime  
-              
+          docker exec ubuntu df -h  
+          
+      - name: Running
+        run: |
+          docker exec ubuntu ls -la 
+          
       - name: Listing
         run: docker --version
         
