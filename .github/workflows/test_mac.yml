@@ -44,12 +44,12 @@ jobs:
 
       - name: Starting Ubuntu machine
         run: |
-          docker run --name ubuntu -t -d ubuntu:eoan
+          docker run --name ubuntu --storage-opt size=120G -t -d ubuntu:eoan
       #
           
       - name: Running
         run: |
-          docker exec ubuntu mkdir -p test
+          docker exec ubuntu df -h
           docker exec ubuntu ls -la
 
           
