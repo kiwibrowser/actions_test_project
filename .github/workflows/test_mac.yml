@@ -11,40 +11,14 @@ jobs:
     runs-on: macos-latest
 
     steps:
-          
-      - name: Listing disk space
-        run: |
-          id
-          mkdir -p /Users/runner/storage
-          ls -la /
-          sudo df -h
-          sysctl -a | grep machdep.cpu
-          free -m
-          
-      - name: Listing files
-        run: |
-          sudo du -a / | sort -n -r | head -n 50
-          
-      - name: Creating worker space
-        run: |
-          sudo mkdir -p /work
-          sudo chown -R runner:docker /work
-          ls -la /
-          echo $GITHUB_WORKSPACE
-          pwd
-          ls -la $GITHUB_WORKSPACE
-          echo $GITHUB_WORKSPACE
-                  
-      - name: Testing
-        run: echo $GITHUB_WORKSPACE
+      - name: Listing
+        run: ls -la
         
-      - name: Running symlink
-        run: ln -s /work $GITHUB_WORKSPACE/largefs
-        
-      - uses: actions/checkout@v2
-        with:
-          path: largefs/src
-       
-      - name: Listing files
-        run: |
-          ls -laR $GITHUB_WORKSPACE/largefs/
+      - name: Test
+        run: echo "ok" > file.txt
+                
+      - name: Downloading clang
+        run: curl -s https://raw.githubusercontent.com/chromium/chromium/master/tools/clang/scripts/update.py | python - --output-dir=.
+
+      - name: Listing
+        run: ls -la
