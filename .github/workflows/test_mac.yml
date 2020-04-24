@@ -48,17 +48,21 @@ jobs:
       - name: Creating volume
         run: docker volume create storage
 
+      - name: Creating volume
+        run: docker volume create storage1
+
       - name: Starting Ubuntu machine
-        run: docker run --name ubuntu -t -d -v storage:/storage debian:bullseye
-                
+        run: docker run --name ubuntu -t -d -v storage:/storage storage1:/storage1 ubuntu:eoan
+
       - name: Running
         run: |
           df -h
           docker volume ls
           docker exec ubuntu df -h
+          docker exec ubuntu wget http://www.ovh.net/files/10Gio.dat -O /storage1/test.dat
+          docker exec ubuntu df -h
           docker exec ubuntu ls -la
 
-          
       - name: Listing running machines
         run: docker-machine ls
           
