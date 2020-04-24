@@ -56,7 +56,7 @@ jobs:
 
       - name: Running
         run: |
-          docker run --name ubuntu ubuntu:eoan ls -la
+          docker run --name ubuntu -t -d ubuntu:eoan
       
       - name: Running
         run: |
