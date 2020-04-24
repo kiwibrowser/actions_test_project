@@ -51,7 +51,7 @@ jobs:
                 
       - name: Running
         run: |
-          ls -la ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2
+          ls -la ~/Library/Containers/com.docker.docker/Data/vms/0/
           docker exec ubuntu df -h
           docker exec ubuntu ls -la
 
