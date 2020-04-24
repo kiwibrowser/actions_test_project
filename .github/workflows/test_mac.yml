@@ -51,7 +51,7 @@ jobs:
                 
       - name: Running
         run: |
-          ls -la ~/Library/Containers/com.docker.docker/Data/vms/0/
+          ls -laR ~/Library/Containers/com.docker.docker/
           docker exec ubuntu df -h
           docker exec ubuntu ls -la
 
