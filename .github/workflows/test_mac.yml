@@ -52,7 +52,7 @@ jobs:
         run: docker volume create storage1
 
       - name: Starting Ubuntu machine
-        run: docker run --name ubuntu -t -d -v storage:/storage storage1:/storage1 ubuntu:eoan
+        run: docker run --name ubuntu -t -d -v storage:/storage -v storage1:/storage1 ubuntu:eoan
 
       - name: Running
         run: |
