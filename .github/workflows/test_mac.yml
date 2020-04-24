@@ -21,6 +21,8 @@ jobs:
           
       - name: Booting machine
         run: |
+          mkdir -p ~/.docker/machine/cache
+          curl -Lo ~/.docker/machine/cache/boot2docker.iso https://github.com/boot2docker/boot2docker/releases/download/v19.03.5/boot2docker.iso
           while ! docker-machine create --driver xhyve default; do
             docker-machine rm -f default
             sleep 1;
