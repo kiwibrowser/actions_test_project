@@ -53,6 +53,11 @@ jobs:
       - name: Running
         run: |
           docker exec ubuntu mkdir -p test
+          docker exec ubuntu mkdir -p ls -la
+
+          
+      - name: Listing running machines
+        run: docker-machine ls
           
       - name: Mounting disk
         run: docker-machine mount ubuntu:/etc test
