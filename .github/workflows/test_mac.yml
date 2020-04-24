@@ -57,7 +57,7 @@ jobs:
         run: docker-machine ls
           
       - name: Mounting disk
-        run: docker-machine mount ubuntu:/etc test
+        run: docker-machine mount default:/etc test
           
       - name: Running
         run: |
@@ -65,7 +65,7 @@ jobs:
           
       - name: Running
         run: |
-          docker exec ubuntu ls -la test  
+          ls -la test  
           
       - name: Running
         run: |
