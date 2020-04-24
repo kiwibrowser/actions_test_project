@@ -27,9 +27,15 @@ jobs:
             docker-machine rm -f default
             sleep 1;
           done
-          
+
       - name: Testing machine
-        run: docker-machine ssh default id -un
+        run: docker-machine ls
+
+      - name: Env
+        run: docker-machine env default
+
+      - name: Testing machine
+        run: docker-machine ssh default id
       
       - name: Running
         run: docker run --name ubuntu ubuntu:eoan ls -la
