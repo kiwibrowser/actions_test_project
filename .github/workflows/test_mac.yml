@@ -44,7 +44,7 @@ jobs:
           echo ::set-env name=DOCKER_IP::${DOCKER_IP}
 
       - name: Creating volume
-        run: docker volume create storage -o size=100G
+        run: docker volume create storage
 
       - name: Starting Ubuntu machine
         run: docker run --name ubuntu -t -d -v storage:/storage ubuntu:eoan
