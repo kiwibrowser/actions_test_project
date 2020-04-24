@@ -46,17 +46,21 @@ jobs:
         run: |
           docker run --name ubuntu -t -d ubuntu:eoan
       #
+          
+      - name: Running
+        run: |
+          docker exec ubuntu mkdir -p test
+          
+      - name: Mounting disk
+        run: docker-machine mount ubuntu:/etc test
+          
       - name: Running
         run: |
           docker exec ubuntu id
           
       - name: Running
         run: |
-          docker exec ubuntu ls -la /root/  
-          
-      - name: Running
-        run: |
-          docker exec ubuntu ls -la $HOME  
+          docker exec ubuntu ls -la test  
           
       - name: Running
         run: |
