@@ -18,6 +18,18 @@ jobs:
         run: |
           sudo chown root:wheel $(brew --prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
           sudo chmod u+s $(brew --prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve  
+          
+      - name: Booting machine
+        run: |
+          mkdir -p ~/.docker/machine/cache
+          curl -Lo ~/.docker/machine/cache/boot2docker.iso https://github.com/boot2docker/boot2docker/releases/download/v19.03.5/boot2docker.iso
+          while ! docker-machine --driver xhyve create default; do
+            docker-machine rm -f default
+            sleep 1;
+          done
+          
+      - name: Testing machine
+        run: docker-machine ssh default id -un
       
       - name: Running
         run: docker run --name ubuntu ubuntu:eoan ls -la
