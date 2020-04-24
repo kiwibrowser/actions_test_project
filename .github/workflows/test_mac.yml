@@ -45,7 +45,7 @@ jobs:
       - name: Starting Ubuntu machine
         run: |
           docker run --name ubuntu -t -d -v /etc:/root ubuntu:eoan
-      
+      #
       - name: Running
         run: |
           docker exec ubuntu id
