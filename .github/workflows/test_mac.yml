@@ -49,10 +49,12 @@ jobs:
         run: docker volume create storage
 
       - name: Starting Ubuntu machine
-        run: docker run --name ubuntu -t -d -v storage:/storage --storage-opt size=100G ubuntu:eoan
+        run: docker run --name ubuntu -t -d -v storage:/storage ubuntu:eoan
                 
       - name: Running
         run: |
+          cat /Users/runner/.docker/machine/machines/default/config.json
+          find .docker -name '*'
           df -h
           find Library -name '*.qcow2'
           echo "Ok"
