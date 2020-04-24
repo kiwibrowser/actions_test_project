@@ -52,6 +52,7 @@ jobs:
       - name: Running
         run: |
           docker volume ls
+          find Library -name '*'
           docker exec ubuntu df -h
           docker exec ubuntu ls -la
 
@@ -68,7 +69,8 @@ jobs:
           
       - name: Running
         run: |
-          ls -la test  
+          ls -la test 
+           
           
       - name: Running
         run: |
