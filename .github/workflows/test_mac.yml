@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Init docker
-        run: brew install docker docker-compose docker-machine xhyve docker-machine-driver-xhyve
+        run: brew install docker docker-compose docker-machine xhyve docker-machine-driver-xhyve sshfs
         
       - name: Give perms
         run: |
