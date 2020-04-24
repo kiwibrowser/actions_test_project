@@ -49,8 +49,8 @@ jobs:
           
       - name: Running
         run: |
-          docker exec ubuntu 'mkdir -p test'
-          docker exec ubuntu 'ls -la'
+          docker exec ubuntu mkdir -p test
+          docker exec ubuntu ls -la
 
           
       - name: Listing running machines
