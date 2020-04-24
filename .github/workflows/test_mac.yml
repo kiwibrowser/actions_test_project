@@ -21,13 +21,14 @@ jobs:
         run: |
           sudo chown root:wheel $(brew --prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve
           sudo chmod u+s $(brew --prefix)/opt/docker-machine-driver-xhyve/bin/docker-machine-driver-xhyve  
-          df
+          df -h
       
       #
       - name: Booting machine
         run: |
           mkdir -p ~/.docker/machine/cache
           curl -Lo ~/.docker/machine/cache/boot2docker.iso https://github.com/boot2docker/boot2docker/releases/download/v18.06.1-ce/boot2docker.iso
+          df -h
           for i in $(seq 1 10); do docker-machine create --driver xhyve default && s=0 && break || sudo kill -9 `ps aux | grep xhyve | grep -v grep | awk '{print $2}'` && sudo rm -rf /Users/runner/.docker/machine/machines/default && s=$? && sleep 15; done; (exit $s)    # Retry 10 times before abort
           
       - name: Export connection to Docker
@@ -42,6 +43,7 @@ jobs:
           echo ::set-env name=DOCKER_CERT_PATH::${DOCKER_CERT_PATH}
           echo ::set-env name=DOCKER_MACHINE_NAME::${DOCKER_MACHINE_NAME}
           echo ::set-env name=DOCKER_IP::${DOCKER_IP}
+          df -h
 
       - name: Creating volume
         run: docker volume create storage
@@ -51,8 +53,8 @@ jobs:
                 
       - name: Running
         run: |
+          df -h
           docker volume ls
-          sudo find / -name 'com.docker.docker'
           docker exec ubuntu df -h
           docker exec ubuntu ls -la
 
