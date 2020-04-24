@@ -11,11 +11,11 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - name: Install sshfs
+      - name: Install osxfuse
         run: brew cask install osxfuse
 
       - name: Init docker
-        run: brew install docker docker-compose docker-machine xhyve docker-machine-driver-xhyve
+        run: brew install docker docker-compose docker-machine xhyve docker-machine-driver-xhyve sshfs
         
       - name: Give perms
         run: |
