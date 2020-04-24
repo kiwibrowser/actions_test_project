@@ -48,15 +48,13 @@ jobs:
       - name: Creating volume
         run: docker volume create storage
 
-      - name: Creating volume
-        run: docker volume create storage1
-
       - name: Starting Ubuntu machine
-        run: docker run --name ubuntu -t -d -v storage:/storage -v storage1:/storage1 ubuntu:eoan
+        run: docker run --name ubuntu -t -d -v storage:/storage -v /etc:/root/test ubuntu:eoan
 
       - name: Running
         run: |
           df -h
+          docker exec ubuntu ls -la /root/test
           docker volume ls
           docker exec ubuntu df -h
           docker exec ubuntu wget http://www.ovh.net/files/10Gio.dat -O /storage1/test.dat
