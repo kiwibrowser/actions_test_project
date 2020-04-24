@@ -49,16 +49,11 @@ jobs:
         run: docker volume create storage
 
       - name: Starting Ubuntu machine
-        run: docker run --name ubuntu -t -d -v storage:/storage ubuntu:eoan
+        run: docker run --name ubuntu -t -d -v storage:/storage debian:bullseye
                 
       - name: Running
         run: |
-          cat /Users/runner/.docker/machine/machines/default/config.json
-          find /Users/runner/.docker -name '*'
           df -h
-          find /Users/runner/Library -name '*.qcow2'
-          echo "Ok"
-          sudo find /Library/ -name '*.qcow2'
           docker volume ls
           docker exec ubuntu df -h
           docker exec ubuntu ls -la
