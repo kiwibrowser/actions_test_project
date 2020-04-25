@@ -11,6 +11,11 @@ jobs:
     runs-on: macos-latest
 
     steps:
+      - name: Test
+        run: |
+          ifconfig -a
+          lsxx
+        
       - name: Install osxfuse
         run: brew cask install osxfuse
 
