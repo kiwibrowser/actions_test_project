@@ -19,7 +19,6 @@ jobs:
           sudo nfsd enable
           sudo nfsd start
           nfsd status
-          lsxx
         
       - name: Install osxfuse
         run: brew cask install osxfuse
@@ -66,11 +65,10 @@ jobs:
 
       - name: Running
         run: |
+          docker exec ubuntu ifconfig -a
           df -h
           docker exec ubuntu ls -la /root/test
           docker volume ls
-          docker exec ubuntu df -h
-          docker exec ubuntu wget http://www.ovh.net/files/10Gio.dat -O /storage1/test.dat
           docker exec ubuntu df -h
           docker exec ubuntu ls -la
 
