@@ -63,9 +63,8 @@ jobs:
 
       - name: Running
         run: |
-          docker history ubuntu
-          echo $DOCKER_IP
           docker history ubuntu:eoan
+          echo $DOCKER_IP
           df -h
           docker exec ubuntu ls -la /root/test
           docker volume ls
