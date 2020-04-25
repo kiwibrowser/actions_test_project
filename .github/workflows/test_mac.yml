@@ -65,7 +65,7 @@ jobs:
 
       - name: Running
         run: |
-          docker exec ubuntu ip addr show
+          echo $DOCKER_IP
           df -h
           docker exec ubuntu ls -la /root/test
           docker volume ls
