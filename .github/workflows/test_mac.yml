@@ -11,6 +11,21 @@ jobs:
     runs-on: macos-latest
 
     steps:
+      - name: Re-routing git commands inside docker
+        run: echo "::add-path::$GITHUB_WORKSPACE/tools"
+      
+      - name: Creating tools
+        run: |
+          mkdir -p tools
+          echo "#!/bin/sh" > tools/git
+          echo "echo 'git is ok'" >> tools/git
+          chmod +x tools/git
+      
+      - name: Checking-out source-code
+        uses: actions/checkout@v2
+        with:
+          path: storage/src
+
       - name: Install osxfuse
         run: brew cask install osxfuse
 
