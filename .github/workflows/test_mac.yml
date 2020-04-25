@@ -28,7 +28,7 @@ jobs:
           mkdir -p ~/.docker/machine/cache
           curl -Lo ~/.docker/machine/cache/boot2docker.iso https://github.com/boot2docker/boot2docker/releases/download/v18.06.1-ce/boot2docker.iso
           df -h
-          for i in $(seq 1 10); do docker-machine create --xhyve-experimental-nfs-share / --xhyve-experimental-nfs-share-root /host --driver xhyve --xhyve-rawdisk --xhyve-disk-size '100000' default && s=0 && break || sudo kill -9 `ps aux | grep xhyve | grep -v grep | awk '{print $2}'` && sudo rm -rf /Users/runner/.docker/machine/machines/default && s=$? && sleep 15; done; (exit $s)    # Retry 10 times before abort
+          for i in $(seq 1 10); do docker-machine create --driver xhyve --xhyve-rawdisk --xhyve-disk-size '100000' default && s=0 && break || sudo kill -9 `ps aux | grep xhyve | grep -v grep | awk '{print $2}'` && sudo rm -rf /Users/runner/.docker/machine/machines/default && s=$? && sleep 15; done; (exit $s)    # Retry 10 times before abort
           
       - name: Export connection to Docker
         run: |
@@ -50,10 +50,9 @@ jobs:
 
       - name: Running
         run: |
-          docker history ubuntu:eoan
           echo $DOCKER_IP
           df -h
-          docker exec ubuntu ls -la /root/test
+          docker exec ubuntu df -h
           docker volume ls
           docker exec ubuntu df -h
           docker exec ubuntu ls -la
