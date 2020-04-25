@@ -52,7 +52,7 @@ jobs:
         run: |
           echo $DOCKER_IP
           df -h
-          docker exec pwd
+          docker exec ubuntu pwd
           docker volume ls
           docker exec ubuntu df -h
           docker exec ubuntu ls -la
