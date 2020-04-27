@@ -11,9 +11,7 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - name: cat /etc/gitconfig
-        run: cat /etc/gitconfig
-    
+
       - name: cat ~/.gitconfig
         run: cat ~/.gitconfig
         
