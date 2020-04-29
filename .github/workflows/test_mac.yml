@@ -13,7 +13,7 @@ jobs:
     steps:
 
       - name: cat ~/.gitconfig
-        run: free -m
+        run: top -l 1 -s 0 | grep PhysMem
         
       - name: Install osxfuse
         run: brew cask install osxfuse
