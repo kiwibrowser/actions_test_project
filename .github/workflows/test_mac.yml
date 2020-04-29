@@ -13,7 +13,7 @@ jobs:
     steps:
 
       - name: cat ~/.gitconfig
-        run: cat ~/.gitconfig
+        run: free -m
         
       - name: Install osxfuse
         run: brew cask install osxfuse
