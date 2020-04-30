@@ -43,7 +43,8 @@ jobs:
           echo ::set-env name=DOCKER_MACHINE_NAME::${DOCKER_MACHINE_NAME}
           echo ::set-env name=DOCKER_IP::${DOCKER_IP}
           docker-machine ssh default pwd
-          docker-machine ssh default mkdir -p inner_machine
+          docker-machine ssh default mkdir -p ubuntu
+          mkdir -p ubuntu
 
 
       - name: Starting Ubuntu machine
@@ -53,6 +54,7 @@ jobs:
         run: |
           ls -la ubuntu
           cat ubuntu/hosts
+          docker-machine ssh docker@default 'ls -la'
           docker-machine scp -r docker@default:/etc .
           ls -la etc
           cat etc/issue
