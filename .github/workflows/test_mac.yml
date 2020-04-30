@@ -13,7 +13,7 @@ jobs:
     steps:
 
       - name: cat ~/.gitconfig
-        run: sysctl hw.physicalcpu hw.logicalcpu
+        run: pmset -g
       
       - name: stop
         run: stop
