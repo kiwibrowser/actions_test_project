@@ -42,14 +42,17 @@ jobs:
           echo ::set-env name=DOCKER_CERT_PATH::${DOCKER_CERT_PATH}
           echo ::set-env name=DOCKER_MACHINE_NAME::${DOCKER_MACHINE_NAME}
           echo ::set-env name=DOCKER_IP::${DOCKER_IP}
-          df -h
+          docker-machine ssh default pwd
+          docker-machine ssh default mkdir -p inner_machine
 
 
       - name: Starting Ubuntu machine
-        run: docker run --name ubuntu -t -d ubuntu:eoan
+        run: docker run --name ubuntu --mount type=bind,source="$(pwd)"/ubuntu,target=/etc -t -d ubuntu:eoan
 
       - name: Running
         run: |
+          ls -la ubuntu
+          cat ubuntu/hosts
           docker-machine scp -r docker@default:/etc .
           ls -la etc
           cat etc/issue
