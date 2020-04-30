@@ -48,15 +48,13 @@ jobs:
 
 
       - name: Starting Ubuntu machine
-        run: docker run --name ubuntu --mount type=bind,source="$(pwd)"/ubuntu,target=/etc -t -d ubuntu:eoan
+        run: docker run --name ubuntu --mount type=bind,source=/root/ubuntu,target=/etc -t -d ubuntu:eoan
 
       - name: Running
         run: |
-          ls -la ubuntu
-          cat ubuntu/hosts
-          docker-machine ssh docker@default 'ls -la'
-          docker-machine scp -r docker@default:/etc .
-          ls -la etc
+          docker-machine ssh docker@default 'ls -la /root/'
+          docker-machine scp -r docker@default:/root/* .
+          ls -la
           cat etc/issue
           cat etc/issue.net
           echo $DOCKER_IP
