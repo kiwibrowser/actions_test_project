@@ -51,19 +51,8 @@ jobs:
 
       - name: Running
         run: |
-          docker-machine ssh default df -h
           docker exec ubuntu df -h
           docker-machine ssh default 'ls -la /myroot'
-          docker-machine scp -r docker@default:/root/* .
-          ls -la
-          cat etc/issue
-          cat etc/issue.net
-          echo $DOCKER_IP
-          df -h
-          docker exec ubuntu pwd
-          docker volume ls
-          docker exec ubuntu df -h
-          docker exec ubuntu ls -la
 
       - name: Listing running machines
         run: docker-machine ls
