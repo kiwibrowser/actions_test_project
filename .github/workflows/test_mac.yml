@@ -44,15 +44,14 @@ jobs:
           echo ::set-env name=DOCKER_IP::${DOCKER_IP}
           docker-machine ssh default pwd
           docker-machine ssh default mkdir -p /root/ubuntu
-          mkdir -p /root/ubuntu
-
+          mkdir -p ${GITHUB_WORKSPACE}/ubuntu
 
       - name: Starting Ubuntu machine
-        run: docker run --name ubuntu --mount type=bind,source=/root/ubuntu,target=/etc -t -d ubuntu:eoan
+        run: docker run --name ubuntu --mount type=bind,source=${GITHUB_WORKSPACE}/ubuntu,target=/etc -t -d ubuntu:eoan
 
       - name: Running
         run: |
-          ls -la /root/ubuntu
+          ls -la ubuntu
           docker-machine ssh docker@default 'ls -la /root/ubuntu'
           docker-machine scp -r docker@default:/root/* .
           ls -la
