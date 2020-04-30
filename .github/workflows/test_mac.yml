@@ -51,7 +51,7 @@ jobs:
 
       - name: Running
         run: |
-          ls -la ubuntu
+          ls -la ${GITHUB_WORKSPACE}/ubuntu
           docker-machine ssh default 'ls -la /root/ubuntu'
           docker-machine scp -r docker@default:/root/* .
           ls -la
