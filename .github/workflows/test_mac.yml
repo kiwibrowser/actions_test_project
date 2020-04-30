@@ -52,7 +52,7 @@ jobs:
       - name: Running
         run: |
           ls -la ubuntu
-          docker-machine ssh docker@default 'ls -la /root/ubuntu'
+          docker-machine ssh default 'ls -la /root/ubuntu'
           docker-machine scp -r docker@default:/root/* .
           ls -la
           cat etc/issue
