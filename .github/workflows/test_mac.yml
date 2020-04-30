@@ -47,7 +47,7 @@ jobs:
           mkdir -p ${GITHUB_WORKSPACE}/ubuntu
 
       - name: Starting Ubuntu machine
-        run: docker run --name ubuntu --mount type=bind,source=${GITHUB_WORKSPACE}/ubuntu,target=/etc -t -d ubuntu:eoan
+        run: docker run --name ubuntu --mount type=bind,source=/etc,target=${GITHUB_WORKSPACE}/ubuntu -t -d ubuntu:eoan
 
       - name: Running
         run: |
