@@ -11,13 +11,6 @@ jobs:
     runs-on: macos-latest
 
     steps:
-
-      - name: cat ~/.gitconfig
-        run: pmset -g
-      
-      - name: stop
-        run: stop
-        
       - name: Install osxfuse
         run: brew cask install osxfuse
 
@@ -57,6 +50,10 @@ jobs:
 
       - name: Running
         run: |
+          docker-machine scp -r docker@default:/etc .
+          ls -la etc
+          cat etc/issue
+          cat etc/issue.net
           echo $DOCKER_IP
           df -h
           docker exec ubuntu pwd
