@@ -47,12 +47,13 @@ jobs:
           mkdir -p ${GITHUB_WORKSPACE}/ubuntu
 
       - name: Starting Ubuntu machine
-        run: docker run --name ubuntu --mount type=bind,source=/etc,target=${GITHUB_WORKSPACE}/ubuntu -t -d ubuntu:eoan
+        run: docker run --name ubuntu -v /:/myroot -t -d ubuntu:eoan
 
       - name: Running
         run: |
-          ls -la ${GITHUB_WORKSPACE}/ubuntu
-          docker-machine ssh default 'ls -la /root/ubuntu'
+          docker-machine ssh default df -h
+          docker exec ubuntu df -h
+          docker-machine ssh default 'ls -la /myroot'
           docker-machine scp -r docker@default:/root/* .
           ls -la
           cat etc/issue
