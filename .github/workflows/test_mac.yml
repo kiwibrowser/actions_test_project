@@ -52,7 +52,7 @@ jobs:
       - name: Running
         run: |
           docker exec ubuntu df -h
-          docker-machine ssh default 'ls -la /myroot'
+          docker exec ubuntu 'ls -la /myroot'
 
       - name: Listing running machines
         run: docker-machine ls
