@@ -17,6 +17,9 @@ jobs:
       - name: listing
         run: ls -la *.lzma  
       
+      - name: Unpacking tar -xvf -P -H posix --lzma storage.lzma
+        run: tar -xvf -P -H posix --lzma storage.lzma
+      
       - name: stop
         run: stop
         
