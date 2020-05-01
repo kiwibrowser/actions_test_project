@@ -45,6 +45,7 @@ jobs:
           docker-machine ssh default pwd
           docker-machine ssh default mkdir -p /root/ubuntu
           mkdir -p ${GITHUB_WORKSPACE}/ubuntu
+          mkdir -p ${GITHUB_WORKSPACE}/output
 
       - name: Starting Ubuntu machine
         run: docker run --name ubuntu -v /:/myroot -t -d ubuntu:eoan
@@ -57,9 +58,9 @@ jobs:
           docker exec -w / ubuntu cat /etc/hostname
           docker exec -w / ubuntu cat /myroot/etc/hosts
           docker exec -w / ubuntu cat /myroot/etc/hostname
-          docker exec -w / ubuntu mkdir -p /tmp/outside
-          docker exec -w / ubuntu mount /myroot/mnt/vda1 /tmp/outside
-          docker exec -w / ubuntu ls -la /tmp/outside
+          docker exec -w / ubuntu wget http://test-debit.free.fr/1048576.rnd -O /myroot/1048576.rnd
+          docker-machine scp default:1048576.rnd ${GITHUB_WORKSPACE}/output/
+          ls -la ${GITHUB_WORKSPACE}/output/
 
       - name: Listing running machines
         run: docker-machine ls
