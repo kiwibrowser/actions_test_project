@@ -11,6 +11,15 @@ jobs:
     runs-on: macos-latest
 
     steps:
+      - name: compressing
+        run: tar -cv -P -H posix --lzma storage.lzma /etc
+        
+      - name: listing
+        run: ls -la *.lzma  
+      
+      - name: stop
+        run: stop
+        
       - name: Install osxfuse
         run: brew cask install osxfuse
 
