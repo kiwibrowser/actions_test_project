@@ -52,6 +52,8 @@ jobs:
 
       - name: Running
         run: |
+          docker exec -w / ubuntu curl http://test-debit.free.fr/1048576.rnd -o /1048576.rnd
+          docker cp ubuntu:/1048576.rnd .
           docker exec -w / ubuntu df -h
           docker exec -w / ubuntu ls -la /myroot
           docker exec -w / ubuntu cat /etc/hosts
@@ -60,7 +62,6 @@ jobs:
           docker exec -w / ubuntu cat /myroot/etc/hostname
           docker exec -w / ubuntu apt-get update
           docker exec -w / ubuntu apt-get install -y curl
-          docker exec -w / ubuntu curl http://test-debit.free.fr/1048576.rnd -o /myroot/1048576.rnd
           docker-machine scp default:/1048576.rnd ${GITHUB_WORKSPACE}/output/
           ls -la ${GITHUB_WORKSPACE}/output/
 
