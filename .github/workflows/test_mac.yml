@@ -51,10 +51,10 @@ jobs:
 
       - name: Running
         run: |
-          docker exec ubuntu -w / df -h
-          docker exec ubuntu -w / 'mkdir -p /outside'
-          docker exec ubuntu -w / 'mount /myroot/mnt/vda1 /outside'
-          docker exec ubuntu -w / 'ls -la /outside'
+          docker exec -w / ubuntu df -h
+          docker exec -w / ubuntu 'mkdir -p /outside'
+          docker exec -w / ubuntu 'mount /myroot/mnt/vda1 /outside'
+          docker exec -w / ubuntu 'ls -la /outside'
 
       - name: Listing running machines
         run: docker-machine ls
