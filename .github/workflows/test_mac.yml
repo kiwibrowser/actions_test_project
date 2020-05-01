@@ -53,8 +53,12 @@ jobs:
         run: |
           docker exec -w / ubuntu df -h
           docker exec -w / ubuntu ls -la /myroot
+          docker exec -w / ubuntu cat /etc/hosts
+          docker exec -w / ubuntu cat /etc/hostname
+          docker exec -w / ubuntu cat /myroot/etc/hosts
+          docker exec -w / ubuntu cat /myroot/etc/hostname
           docker exec -w / ubuntu mkdir -p /tmp/outside
-          docker exec -w / ubuntu sudo mount /myroot/mnt/vda1 /tmp/outside
+          docker exec -w / ubuntu mount /myroot/mnt/vda1 /tmp/outside
           docker exec -w / ubuntu ls -la /tmp/outside
 
       - name: Listing running machines
