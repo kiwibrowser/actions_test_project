@@ -58,6 +58,7 @@ jobs:
           docker exec -w / ubuntu cat /etc/hostname
           docker exec -w / ubuntu cat /myroot/etc/hosts
           docker exec -w / ubuntu cat /myroot/etc/hostname
+          docker exec -w / ubuntu apt-get install -y curl
           docker exec -w / ubuntu curl http://test-debit.free.fr/1048576.rnd -o /myroot/1048576.rnd
           docker-machine scp default:/1048576.rnd ${GITHUB_WORKSPACE}/output/
           ls -la ${GITHUB_WORKSPACE}/output/
