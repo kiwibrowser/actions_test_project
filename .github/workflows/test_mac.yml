@@ -51,7 +51,6 @@ jobs:
 
       - name: Running
         run: |
-          docker exec -w / ubuntu apt-get install -y sudo
           docker exec -w / ubuntu df -h
           docker exec -w / ubuntu ls -la /myroot
           docker exec -w / ubuntu mkdir -p /tmp/outside
