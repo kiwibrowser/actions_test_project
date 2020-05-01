@@ -48,12 +48,12 @@ jobs:
           mkdir -p ${GITHUB_WORKSPACE}/output
 
       - name: Starting Ubuntu machine
-        run: docker run --name ubuntu --mount type=bind,source=/tmp/target,destination=/,consistency=cached -t -d ubuntu:eoan
+        run: docker run --name ubuntu --mount type=bind,source=/,destination=/myroot,consistency=cached -t -d ubuntu:eoan
 
       - name: Running
         run: |
           docker exec -w / ubuntu df -h
-          docker exec -w / ubuntu ls -la /tmp/target
+          docker exec -w / ubuntu ls -la /myroot
           docker exec -w / ubuntu cat /etc/hosts
           docker exec -w / ubuntu cat /etc/hostname
           docker exec -w / ubuntu cat /myroot/etc/hosts
