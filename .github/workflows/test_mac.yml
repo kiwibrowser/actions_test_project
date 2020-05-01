@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: compressing
-        run: tar -cvf -P -H posix --lzma storage.lzma /etc/host*
+        run: tar -cvf storage.lzma -P -H posix --lzma /etc/host*
         
       - name: listing
         run: ls -la *.lzma  
