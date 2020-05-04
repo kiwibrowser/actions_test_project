@@ -40,7 +40,7 @@ jobs:
         run: ifconfig -a
         
       - name: Installing distcc
-        run: sudo apt-get install -y distcc iperf
+        run: sudo apt-get install -y distcc iperf 
 
       - name: Installing ZeroTier (networking)
         run: curl -s https://install.zerotier.com | sudo bash
