@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Preparing controller
+      - name: Preparing controller 
         run: ifconfig -a
       
       - name: Installing distcc
