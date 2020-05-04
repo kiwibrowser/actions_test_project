@@ -14,6 +14,9 @@ jobs:
       - name: Preparing controller 
         run: ifconfig -a
       
+      - name: Getting external IP
+        run: curl ipinfo.io
+      
       - name: Installing distcc
         run: sudo apt-get install -y distcc iperf
 
@@ -36,6 +39,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      - name: Getting external IP
+        run: curl ipinfo.io
+        
       - name: Preparing slave
         run: ifconfig -a
         
@@ -56,3 +63,5 @@ jobs:
 
       - name: Listing peers
         run: ping -c4 192.168.194.2
+
+      
