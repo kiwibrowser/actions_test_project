@@ -18,56 +18,9 @@ jobs:
         run: curl ipinfo.io
       
       - name: Downloading file
-        run: wget https://s3.wasabisys.com/kiwibrowser/32768.rnd
+        env:
+          WASABI_FTP_USERNAME: ${{ secrets.WASABI_FTP_USERNAME }}
+          WASABI_FTP_PASSWORD: ${{ secrets.WASABI_FTP_PASSWORD }}
+        run: wget ftp://$WASABI_FTP_USERNAME:$WASABI_FTP_PASSWORD@s3.wasabisys.com/kiwibrowser/32768.rnd
       
-      - name: Installing distcc
-        run: sudo apt-get install -y distcc iperf
-
-      - name: Installing ZeroTier (networking)
-        run: curl -s https://install.zerotier.com | sudo bash
-      
-      - name: Joining network
-        run: sudo zerotier-cli join 17d709436cfef35a
-
-      - name: Preparing controller
-        run: sleep 40; ifconfig -a
-        
-      - name: Listing peers
-        run: ping -c4 192.168.194.1
-
-      - name: Listing peers
-        run: ping -c4 192.168.194.2
-
-  slave:
-    runs-on: ubuntu-latest
-
-    steps:
-
-      - name: Getting external IP
-        run: curl ipinfo.io
-        
-      - name: Downloading file
-        run: wget https://s3.wasabisys.com/kiwibrowser/32768.rnd
-
-      - name: Preparing slave
-        run: ifconfig -a
-        
-      - name: Installing distcc
-        run: sudo apt-get install -y distcc iperf 
-
-      - name: Installing ZeroTier (networking)
-        run: curl -s https://install.zerotier.com | sudo bash
-        
-      - name: Joining network
-        run: sudo zerotier-cli join 17d709436cfef35a
-        
-      - name: Preparing controller
-        run: sleep 40; ifconfig -a
-
-      - name: Listing peers
-        run: ping -c4 192.168.194.1
-
-      - name: Listing peers
-        run: ping -c4 192.168.194.2
-
       
