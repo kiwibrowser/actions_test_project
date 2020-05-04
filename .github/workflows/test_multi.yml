@@ -25,6 +25,9 @@ jobs:
         
       - name: Preparing controller
         run: ifconfig -a
+        
+      - name: Listing peers
+        run: zerotier-cli listpeers
 
   slave:
     runs-on: ubuntu-latest
@@ -41,3 +44,6 @@ jobs:
         
       - name: Preparing controller
         run: ifconfig -a
+
+      - name: Listing peers
+        run: zerotier-cli listpeers
