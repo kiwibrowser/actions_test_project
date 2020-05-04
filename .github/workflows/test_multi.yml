@@ -17,7 +17,7 @@ jobs:
       - name: Getting external IP
         run: curl ipinfo.io
       
-      - name: Downloading file
+      - name: Downloading file (test)
         env:
           WASABI_FTP_USERNAME: ${{ secrets.WASABI_FTP_USERNAME }}
           WASABI_FTP_PASSWORD: ${{ secrets.WASABI_FTP_PASSWORD }}
