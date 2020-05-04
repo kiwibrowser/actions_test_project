@@ -19,6 +19,12 @@ jobs:
 
       - name: Installing ZeroTier (networking)
         run: curl -s https://install.zerotier.com | sudo bash
+      
+      - name: Joining network
+        run: sudo zerotier-cli join 17d709436cfef35a
+        
+      - name: Preparing controller
+        run: ifconfig -a
 
   slave:
     runs-on: ubuntu-latest
@@ -29,3 +35,9 @@ jobs:
 
       - name: Installing ZeroTier (networking)
         run: curl -s https://install.zerotier.com | sudo bash
+        
+      - name: Joining network
+        run: sudo zerotier-cli join 17d709436cfef35a
+        
+      - name: Preparing controller
+        run: ifconfig -a
