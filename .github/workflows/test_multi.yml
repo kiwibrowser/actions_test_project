@@ -13,6 +13,9 @@ jobs:
     steps:
       - name: Preparing controller
         run: ifconfig -a
+      
+      - name: Installing distcc
+        run: sudo apt-get install -y distcc
 
   slave:
     runs-on: ubuntu-latest
