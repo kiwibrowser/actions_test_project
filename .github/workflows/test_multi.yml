@@ -1,0 +1,22 @@
+name: Test build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  controller:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Preparing controller
+        run: ifconfig -a
+
+  slave:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Preparing slave
+        run: ifconfig -a
