@@ -17,6 +17,9 @@ jobs:
       - name: Getting external IP
         run: curl ipinfo.io
       
+      - name: Downloading file
+        run: wget https://s3.wasabisys.com/kiwibrowser/32768.rnd
+      
       - name: Installing distcc
         run: sudo apt-get install -y distcc iperf
 
@@ -43,6 +46,9 @@ jobs:
       - name: Getting external IP
         run: curl ipinfo.io
         
+      - name: Downloading file
+        run: wget https://s3.wasabisys.com/kiwibrowser/32768.rnd
+
       - name: Preparing slave
         run: ifconfig -a
         
