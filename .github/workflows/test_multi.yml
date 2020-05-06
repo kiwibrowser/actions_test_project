@@ -16,3 +16,15 @@ jobs:
           sudo apt-get update
           sudo snap install sccache --candidate --classic
       
+      - name: Creating file
+        run: echo "int main () { return 0; }" > foo.c
+      
+      - name: Testing sccache
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.WASABI_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.WASABI_SECRET_KEY }}
+          SCCACHE_ENDPOINT: s3.wasabisys.com:443
+          SCCACHE_BUCKET: kiwibrowser
+          SCCACHE_S3_USE_SSL: true
+        run: sccache gcc -o foo.o -c foo.c
+        
