@@ -46,8 +46,14 @@ jobs:
           SCCACHE_ENDPOINT: s3.wasabisys.com:443
           SCCACHE_BUCKET: kiwibrowser
           SCCACHE_S3_USE_SSL: true
-          SCCACHE_LOG_LEVEL: true
+          SCCACHE_LOG_LEVEL: trace
         run: sccache gcc -o foo.o -c foo.c
         
       - name: Listing files
+        run: ls -la
+
+      - name: Listing files
         run: ls -la /tmp
+        
+      - name: Listing files
+        run: ls -la /tmp/ccache
