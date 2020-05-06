@@ -47,8 +47,12 @@ jobs:
           SCCACHE_BUCKET: kiwibrowser
           SCCACHE_S3_USE_SSL: true
           SCCACHE_LOG_LEVEL: trace
-          SCCACHE_NO_DAEMON: 1
-          RUST_BACKTRACE: 1
+        run: sccache --start-server
+      
+      - name: Checking
+        run: sccache --show-stats
+      
+      - name: Building
         run: sccache gcc -o foo.o -c foo.c
         
       - name: Listing files
