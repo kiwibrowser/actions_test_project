@@ -50,4 +50,4 @@ jobs:
         run: sccache gcc -o foo.o -c foo.c
         
       - name: Listing files
-        run: ls -la
+        run: ls -la /tmp
