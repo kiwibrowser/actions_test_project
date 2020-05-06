@@ -14,7 +14,7 @@ jobs:
       - name: Preparing controller 
         run: |
           sudo apt-get update
-          sudo snap install sccache --candidate --classic
+          sudo cargo install sccache
       
       - name: Creating file
         run: echo "int main () { return 0; }" > foo.c
