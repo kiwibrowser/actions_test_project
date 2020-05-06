@@ -12,15 +12,7 @@ jobs:
 
     steps:
       - name: Preparing controller 
-        run: ifconfig -a
-      
-      - name: Getting external IP
-        run: curl ipinfo.io
-      
-      - name: Downloading file (test)
-        env:
-          WASABI_FTP_USERNAME: ${{ secrets.WASABI_FTP_USERNAME }}
-          WASABI_FTP_PASSWORD: ${{ secrets.WASABI_FTP_PASSWORD }}
-        run: wget "ftp://$WASABI_FTP_USERNAME:$WASABI_FTP_PASSWORD@s3.wasabisys.com/kiwibrowser/32768.rnd"
-      
+        run: |
+          sudo apt-get update
+          sudo apt-get install scacche
       
