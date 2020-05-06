@@ -55,6 +55,9 @@ jobs:
       - name: Building
         run: sccache gcc -o foo.o -c foo.c
         
+      - name: Checking
+        run: sccache --show-stats
+        
       - name: Listing files
         run: ls -la
 
