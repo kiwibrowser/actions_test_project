@@ -15,7 +15,11 @@ jobs:
 #        run: |
 #          sudo apt-get update
 #          sudo cargo install sccache
-      
+      - name: Testing env
+        run: |
+          echo "::set-env name=CC::sccache clang -Qunused-arguments"
+          echo "::set-env name=CXX::sccache clang++ -Qunused-arguments"
+
       - name: Installing cacche
         run: |
           pushd /tmp
