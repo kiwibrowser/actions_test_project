@@ -14,5 +14,5 @@ jobs:
       - name: Preparing controller 
         run: |
           sudo apt-get update
-          sudo apt-get install scacche
+          sudo snap install sccache --candidate --classic
       
