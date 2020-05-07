@@ -42,7 +42,7 @@ jobs:
         run: |
           echo "::set-env name=CC::sccache clang -Qunused-arguments"
           echo "::set-env name=CXX::sccache clang++ -Qunused-arguments"
-          echo "::set-env name=CCACHE_LOGFILE::/tmp/cache.debug"
+          echo "::set-env name=CCACHE_DEBUG::1"
 
       - name: Testing sccache
         env:
@@ -62,7 +62,7 @@ jobs:
         run: sccache --show-stats
         
       - name: Listing files
-        run: cat /tmp/cache.debug
+        run: ls -la
 
       - name: Listing files
         run: ls -la /tmp
