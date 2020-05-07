@@ -15,11 +15,6 @@ jobs:
 #        run: |
 #          sudo apt-get update
 #          sudo cargo install sccache
-      - name: Testing env
-        run: |
-          echo "::set-env name=CC::sccache clang -Qunused-arguments"
-          echo "::set-env name=CXX::sccache clang++ -Qunused-arguments"
-
       - name: Installing cacche
         run: |
           pushd /tmp
@@ -42,7 +37,12 @@ jobs:
 
       - name: Creating file
         run: echo "int main () { return 0; }" > foo.c
-      
+        
+      - name: Testing env
+        run: |
+          echo "::set-env name=CC::sccache clang -Qunused-arguments"
+          echo "::set-env name=CXX::sccache clang++ -Qunused-arguments"
+
       - name: Testing sccache
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.WASABI_ACCESS_KEY }}
