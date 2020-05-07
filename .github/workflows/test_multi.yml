@@ -34,10 +34,10 @@ jobs:
       - name: Installing scacche
         run: |
           pushd /tmp
-          curl -LOs https://github.com/mozilla/sccache/releases/download/0.2.13/sccache-0.2.13-x86_64-unknown-linux-musl.tar.gz
-          tar -zxvf sccache-0.2.13-x86_64-unknown-linux-musl.tar.gz
-          sudo mv sccache-0.2.13-x86_64-unknown-linux-musl/sccache /usr/local/bin/sccache
-          rm -rf sccache-0.2.13-x86_64-unknown-linux-musl*
+          curl -LOs https://github.com/mozilla/sccache/releases/download/0.2.7/sccache-0.2.7-x86_64-unknown-linux-musl.tar.gz
+          tar -zxvf sccache-0.2.7-x86_64-unknown-linux-musl.tar.gz
+          sudo mv sccache-0.2.7-x86_64-unknown-linux-musl/sccache /usr/local/bin/sccache
+          rm -rf sccache-0.2.7-x86_64-unknown-linux-musl*
           popd
 
       - name: Creating file
@@ -47,10 +47,8 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.WASABI_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.WASABI_SECRET_KEY }}
-          SCCACHE_ENDPOINT: s3.wasabisys.com:443
+          SCCACHE_ENDPOINT: s3.wasabisys.com
           SCCACHE_BUCKET: kiwibrowser
-          SCCACHE_S3_USE_SSL: true
-          SCCACHE_LOG_LEVEL: trace
         run: sccache --start-server
       
       - name: Checking
