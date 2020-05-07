@@ -47,7 +47,9 @@ jobs:
           echo "::set-env name=CXX::sccache clang++ -Qunused-arguments"
           echo "::set-env name=CCACHE_DEBUG::1"
           echo "::set-env name=CCACHE_COMPILERCHECK::content"
-          echo "::set-env name=CCACHE_LOGFILE::/tmp/cache.log"
+          echo "::set-env name=CCACHE_LOGFILE::/tmp/cache2.log"
+          echo "::set-env name=SCCACHE_ERROR_LOG::/tmp/cache.log"
+          echo "::set-env name=RUST_LOG::debug"
           
       - name: Testing sccache
         env:
@@ -61,7 +63,7 @@ jobs:
         run: sccache --show-stats
       
       - name: Building
-        run: ccache gcc -o foo.o -c foo.c
+        run: sccache gcc -o foo.o -c foo.c
         
       - name: Checking
         run: sccache --show-stats
