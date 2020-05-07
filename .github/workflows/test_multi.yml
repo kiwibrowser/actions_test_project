@@ -46,7 +46,7 @@ jobs:
           echo "::set-env name=CC::sccache clang -Qunused-arguments"
           echo "::set-env name=CXX::sccache clang++ -Qunused-arguments"
           echo "::set-env name=SCCACHE_ERROR_LOG::/tmp/cache.log"
-  #        echo "::set-env name=RUST_LOG::debug"
+          echo "::set-env name=RUST_LOG::debug"
           
       - name: Testing sccache
         env:
@@ -72,4 +72,4 @@ jobs:
         run: ls -la /tmp
         
       - name: Listing files
-        run: cat /tmp/cache.log
+        run: cat /tmp/cache.log | grep -Fi sccache
