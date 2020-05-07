@@ -38,6 +38,9 @@ jobs:
       - name: Creating file
         run: echo "int main () { return 0; }" > foo.c
         
+      - name: Ok
+        run: find . -type f -exec touch -t 1510210429 {} +
+        
       - name: Testing env
         run: |
           echo "::set-env name=CC::sccache clang -Qunused-arguments"
