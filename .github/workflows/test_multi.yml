@@ -46,7 +46,9 @@ jobs:
           echo "::set-env name=CC::sccache clang -Qunused-arguments"
           echo "::set-env name=CXX::sccache clang++ -Qunused-arguments"
           echo "::set-env name=CCACHE_DEBUG::1"
-
+          echo "::set-env name=CCACHE_COMPILERCHECK::content"
+          echo "::set-env name=CCACHE_LOGFILE::/tmp/cache.log"
+          
       - name: Testing sccache
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.WASABI_ACCESS_KEY }}
@@ -71,4 +73,4 @@ jobs:
         run: ls -la /tmp
         
       - name: Listing files
-        run: ls -la /tmp/ccache
+        run: ls -la /tmp/cache.log
