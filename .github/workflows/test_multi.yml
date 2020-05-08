@@ -21,5 +21,8 @@ jobs:
       - name: Initializing build
         run: echo Initializing build for platform arm
 
+      - name: Install
+        run: apt-get install -y rclone
+
       - name: Pushing
         run: rclone
