@@ -28,7 +28,11 @@ jobs:
         run: |
           mkdir -p /home/runner/.config/rclone/
           echo '[cache]' > /home/runner/.config/rclone/rclone.conf
+          echo 'type = s3' >> /home/runner/.config/rclone/rclone.conf
+          echo 'provider = Wasabi' >> /home/runner/.config/rclone/rclone.conf
+          echo 'env_auth = false' >> /home/runner/.config/rclone/rclone.conf
           echo 'endpoint = s3.wasabisys.com' >> /home/runner/.config/rclone/rclone.conf
+          echo 'acl = public-read' >> /home/runner/.config/rclone/rclone.conf
 
       - name: Pushing
         run: rclone ls cache:kiwibrowser-arm
