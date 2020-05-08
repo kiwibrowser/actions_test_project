@@ -28,15 +28,17 @@ jobs:
 
       - name: Pushing
         run: |
-          echo 'abc' > pass_file
+          mkdir -p /tmp/pass_file
+          echo 'abc' > pass_file/test.txt
 
       - name: Upload file from artifact
         uses: actions/upload-artifact@v1
         with:
           name: pass_file
+          path: /tmp/pass_file
           
       - name: Clearing folder
-        run: rm -rvf pass_file
+        run: rm -rvf /tmp/pass_file
 
       - name: Download file from artifact
         id: download_artifact
@@ -44,6 +46,7 @@ jobs:
         continue-on-error: true
         with:
           name: pass_file
+          path: /tmp/pass_file
 
       - name: Running next step
-        run: ls -la pass_file
+        run: ls -la /tmp/pass_file
