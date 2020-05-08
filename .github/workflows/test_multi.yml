@@ -32,4 +32,5 @@ jobs:
           name: pass_file
 
       - name: Running next step
+        if: ${{ always() }}
         run: echo OK
