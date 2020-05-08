@@ -8,7 +8,7 @@ on:
 
 jobs:
   controller:
-    runs-on: ubuntu-latest
+    container: kiwibrowser/docker_image
     
     strategy:
       fail-fast: false
