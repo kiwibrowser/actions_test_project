@@ -27,10 +27,11 @@ jobs:
         run: echo Initializing build for platform ${{ matrix.platform }}
 
       - name: Download file from artifact
+        id: download_artifact
         uses: actions/download-artifact@v1
+        continue-on-error: true
         with:
           name: pass_file
 
       - name: Running next step
-        if: ${{ always() }}
         run: echo OK
