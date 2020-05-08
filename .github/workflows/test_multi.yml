@@ -10,11 +10,6 @@ jobs:
   controller:
     runs-on: ubuntu-latest
     
-    strategy:
-      fail-fast: false
-      max-parallel: 4
-      matrix:
-        platform: [arm, arm64, x86, x64]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     # /dev/sda1 has more available space than /dev/sdb1 (14 GB only on /dev/sdb1 at this stage)
@@ -24,29 +19,7 @@ jobs:
     # We store the dependencies and output objects on /dev/sdb1 
     steps:
       - name: Initializing build
-        run: echo Initializing build for platform ${{ matrix.platform }}
+        run: echo Initializing build for platform arm
 
       - name: Pushing
-        run: |
-          mkdir -p /tmp/pass_file
-          echo 'abc' > /tmp/pass_file/test.txt
-
-      - name: Upload file from artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: pass_file
-          path: /tmp/pass_file
-          
-      - name: Clearing folder
-        run: rm -rvf /tmp/pass_file
-
-      - name: Download file from artifact
-        id: download_artifact
-        uses: actions/download-artifact@v1
-        continue-on-error: true
-        with:
-          name: pass_file
-          path: /tmp/pass_file
-
-      - name: Running next step
-        run: ls -la /tmp/pass_file
+        run: rclone
