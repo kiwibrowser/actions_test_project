@@ -26,6 +26,19 @@ jobs:
       - name: Initializing build
         run: echo Initializing build for platform ${{ matrix.platform }}
 
+      - name: Pushing
+        run: |
+          mkdir -p pass_file
+          echo 'abc' > pass_file/test.txt
+
+      - name: Upload file from artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: pass_file
+          
+      - name: Clearing folder
+        run: rm -rvf pass_file
+
       - name: Download file from artifact
         id: download_artifact
         uses: actions/download-artifact@v1
@@ -34,4 +47,4 @@ jobs:
           name: pass_file
 
       - name: Running next step
-        run: echo OK
+        run: ls -la pass_file
