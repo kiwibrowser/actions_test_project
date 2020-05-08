@@ -35,7 +35,7 @@ jobs:
           echo 'acl = public-read' >> /home/runner/.config/rclone/rclone.conf
 
       - name: Pushing
-        run: rclone cp cache:kiwibrowser-arm cache
+        run: rclone copy cache:kiwibrowser-arm cache
       
       - name: List
         run: ls -la cache
