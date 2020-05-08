@@ -26,6 +26,7 @@ jobs:
 
       - name: Creating rclone config
         run: |
+          mkdir -p /home/runner/.config/rclone/
           echo '[cache]' > /home/runner/.config/rclone/rclone.conf
           echo 'endpoint = s3.wasabisys.com' >> /home/runner/.config/rclone/rclone.conf
 
