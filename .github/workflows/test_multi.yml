@@ -28,8 +28,7 @@ jobs:
 
       - name: Pushing
         run: |
-          mkdir -p pass_file
-          echo 'abc' > pass_file/test.txt
+          echo 'abc' > pass_file
 
       - name: Upload file from artifact
         uses: actions/upload-artifact@v1
