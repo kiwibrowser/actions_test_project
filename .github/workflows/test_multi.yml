@@ -24,5 +24,10 @@ jobs:
       - name: Install
         run: sudo apt-get install -y rclone
 
+      - name: Creating rclone config
+        run: |
+          echo '[cache]' > /home/runner/.config/rclone/rclone.conf
+          echo 'endpoint = s3.wasabisys.com' >> /home/runner/.config/rclone/rclone.conf
+
       - name: Pushing
-        run: rclone
+        run: rclone ls cache:kiwibrowser-arm
