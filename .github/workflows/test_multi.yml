@@ -28,6 +28,7 @@ jobs:
         run: |
           mkdir -p $HOME/cache/
           echo 'OK' > $HOME/cache/test.txt
+          mkdir -p $HOME/.config/rclone/
 
       - name: Creating rclone config to upload the cache
         if: ${{ github.repository_owner == 'kiwibrowser' }}
