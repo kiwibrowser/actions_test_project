@@ -19,32 +19,7 @@ jobs:
     # We store the dependencies and output objects on /dev/sdb1 
     steps:
       - name: Initializing build
-        run: echo Initializing build for platform arm
-
-      - name: Install
-        run: sudo apt-get install -y rclone
-        
-      - name: Test
         run: |
-          mkdir -p $HOME/cache/
-          echo 'OK' > $HOME/cache/test.txt
-          mkdir -p $HOME/.config/rclone/
-
-      - name: Creating rclone config to upload the cache
-        if: ${{ github.repository_owner == 'kiwibrowser' }}
-        run: |
-          echo '[sync]' > $HOME/.config/rclone/rclone.conf
-          echo 'type = s3' >> $HOME/.config/rclone/rclone.conf
-          echo 'provider = Wasabi' >> $HOME/.config/rclone/rclone.conf
-          echo 'env_auth = false' >> $HOME/.config/rclone/rclone.conf
-          echo 'endpoint = s3.wasabisys.com' >> $HOME/.config/rclone/rclone.conf
-          echo "access_key_id = ${{ secrets.WASABI_ACCESS_KEY }}" >> $HOME/.config/rclone/rclone.conf
-          echo "secret_access_key = ${{ secrets.WASABI_SECRET_KEY }}" >> $HOME/.config/rclone/rclone.conf
-          echo 'acl = public-read' >> $HOME/.config/rclone/rclone.conf
-          
-      - name: Uploading binary objects to cache
-        if: ${{ github.repository_owner == 'kiwibrowser' }}
-        run: rclone copy $HOME/cache/ sync:kiwibrowser-ccache-arm/
-
-      - name: List
-        run: ls -la cache
+          pwd
+          id
+          date
