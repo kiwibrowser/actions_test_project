@@ -19,6 +19,4 @@ jobs:
     # We store the dependencies and output objects on /dev/sdb1 
     steps:
       - name: Initializing build
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ccache
+        run: ls -laR /dev/disk/*
