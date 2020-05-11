@@ -19,4 +19,6 @@ jobs:
     # We store the dependencies and output objects on /dev/sdb1 
     steps:
       - name: Initializing build
-        run: ls -laR /dev/disk/*
+        run: |
+          df -h
+          ls -laR /dev/disk/*
